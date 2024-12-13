@@ -48,7 +48,7 @@ $ npm run dev
 ```
 
 ### Visit Online 🌐
-Check out the live version on Vercel: [DockerfileOptimizer](https://dockerfileoptimizer.vercel.app) 🌟
+Check out the live version on Vercel: [DockerfileOptimizer](https://ai-docker-file-optimizer.netlify.app/) 🌟
 
 ---
 
