@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import { FileCode, Github } from 'lucide-react';
 import { Editor } from './components/Editor';
 import { Analysis } from './components/Analysis';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
 import { analyzeDockerfile } from './utils/openai';
+import { SAMPLE_DOCKERFILE } from './constants/dockerfile';
 import toast, { Toaster } from 'react-hot-toast';
-
-const SAMPLE_DOCKERFILE = `FROM node:16
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]`;
 
 function App() {
   const [dockerfile, setDockerfile] = useState(SAMPLE_DOCKERFILE);
@@ -41,32 +35,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white">
       <Toaster position="top-right" />
-      
-      {/* Header */}
-      <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm fixed top-0 w-full z-10">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <FileCode className="w-8 h-8 text-blue-400" />
-            <h1 className="text-xl font-bold">Dockerfile Analyzer</h1>
-          </div>
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-          >
-            <Github className="w-5 h-5" />
-            <span>View on GitHub</span>
-          </a>
-        </div>
-      </header>
+      <Header />
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 pt-24 pb-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="space-y-4">
+      <main className="flex-1 container mx-auto px-4 pt-16 pb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+          <div className="space-y-3">
             <h2 className="text-lg font-semibold">Your Dockerfile</h2>
             <Editor value={dockerfile} onChange={setDockerfile} />
             <button
@@ -78,19 +53,16 @@ function App() {
             </button>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             <h2 className="text-lg font-semibold">Analysis Results</h2>
-            <Analysis analysis={analysis} loading={loading} />
+            <div className="max-h-[460px] overflow-y-auto pr-2">
+              <Analysis analysis={analysis} loading={loading} />
+            </div>
           </div>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-800 py-6">
-        <div className="container mx-auto px-4 text-center text-gray-400">
-          <p>Remember to use your API calls wisely. Analysis results are cached for 24 hours.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

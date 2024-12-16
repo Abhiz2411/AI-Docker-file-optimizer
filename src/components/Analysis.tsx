@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, AlertCircle } from 'lucide-react';
+import { FileCode, CheckCircle, AlertCircle } from 'lucide-react';
 import { Analysis as AnalysisType } from '../types';
 import { OptimizedOutput } from './OptimizedOutput';
 
@@ -22,20 +22,7 @@ export const Analysis: React.FC<AnalysisProps> = ({ analysis, loading }) => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-green-400 flex items-center gap-2">
-          <CheckCircle className="w-5 h-5" />
-          Best Practices
-        </h3>
-        <ul className="space-y-2">
-          {analysis.suggestions.map((suggestion, index) => (
-            <li key={index} className="flex items-start gap-2 text-gray-300">
-              <span className="text-green-400">•</span>
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <OptimizedOutput analysis={analysis} />
 
       <div className="space-y-4">
         <h3 className="text-xl font-semibold text-blue-400 flex items-center gap-2">
@@ -52,7 +39,20 @@ export const Analysis: React.FC<AnalysisProps> = ({ analysis, loading }) => {
         </ul>
       </div>
 
-      <OptimizedOutput analysis={analysis} />
+      <div className="space-y-4">
+        <h3 className="text-xl font-semibold text-green-400 flex items-center gap-2">
+          <CheckCircle className="w-5 h-5" />
+          Best Practices
+        </h3>
+        <ul className="space-y-2">
+          {analysis.suggestions.map((suggestion, index) => (
+            <li key={index} className="flex items-start gap-2 text-gray-300">
+              <span className="text-green-400">•</span>
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {analysis.error && (
         <div className="text-red-400 bg-red-900/20 p-4 rounded-lg">
