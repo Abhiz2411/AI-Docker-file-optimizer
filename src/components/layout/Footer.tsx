@@ -9,7 +9,7 @@ export const Footer: React.FC = () => (
       {/* Google Pay */}
       <div className="flex items-center gap-1">
         <img
-          src="./assets/icons8-google-pay-50.png"
+          src="/assets/icons8-google-pay-50.png"
           alt="Google Pay Icon"
           className="w-5 h-5"
         />
@@ -18,7 +18,7 @@ export const Footer: React.FC = () => (
       {/* Donation icon */}
       <div className="flex items-center gap-1">
         <img
-          src="./assets/icons8-trust-64.png"
+          src="/assets/icons8-trust-64.png"
           alt="Donation icon"
           className="w-5 h-5"
         />
@@ -26,7 +26,7 @@ export const Footer: React.FC = () => (
       {/* PayPal */}
       <div className="flex items-center gap-1">
         <img
-          src="./assets/icons8-paypal-50.png"
+          src="/assets/icons8-paypal-50.png"
           alt="PayPal Icon"
           className="w-5 h-5"
         />
