@@ -36,34 +36,37 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-900 text-white">
-      <Toaster position="top-right" />
-      <Header />
+  <Toaster position="top-right" />
+  <Header />
 
-      <main className="flex-1 container mx-auto px-4 pt-16 pb-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-          <div className="space-y-3">
-            <h2 className="text-lg font-semibold">Your Dockerfile</h2>
-            <Editor value={dockerfile} onChange={setDockerfile} />
-            <button
-              onClick={handleAnalyze}
-              disabled={loading}
-              className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Analyzing...' : 'Analyze Dockerfile'}
-            </button>
-          </div>
+  <main className="flex-1 container mx-auto px-4 pt-16 pb-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+      {/* Dockerfile Section */}
+      <div className="space-y-3 flex flex-col items-center">
+        <h2 className="text-lg font-semibold">Your Dockerfile</h2>
+        <Editor value={dockerfile} onChange={setDockerfile} />
+        <button
+          onClick={handleAnalyze}
+          disabled={loading}
+          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {loading ? 'Analyzing...' : 'Analyze Dockerfile'}
+        </button>
+      </div>
 
-          <div className="space-y-3">
-            <h2 className="text-lg font-semibold">Analysis Results</h2>
-            <div className="max-h-[460px] overflow-y-auto pr-2">
-              <Analysis analysis={analysis} loading={loading} />
-            </div>
-          </div>
+      {/* Analysis Results Section */}
+      <div className="space-y-3 flex flex-col items-center">
+        <h2 className="text-lg font-semibold">Analysis Results</h2>
+        <div className="max-h-[460px] overflow-y-auto pr-2">
+          <Analysis analysis={analysis} loading={loading} />
         </div>
-      </main>
-
-      <Footer />
+      </div>
     </div>
+  </main>
+
+  <Footer />
+</div>
+
   );
 }
 
