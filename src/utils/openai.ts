@@ -29,7 +29,7 @@ export const analyzeDockerfile = async (dockerfile: string): Promise<Analysis> =
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: dockerfile }
       ],
-      model: "gpt-3.5-turbo",
+      model: "gpt-5-mini",
     });
 
     const result = JSON.parse(completion.choices[0].message.content || '{}');
